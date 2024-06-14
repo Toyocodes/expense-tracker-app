@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    padding: 0;
+    margin: 0;
+  }
+
+  body, .transactions {
+    @apply overflow-x-hidden scroll-smooth p-0 m-0 box-border;
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 200px;
+    }
+  
+    &::-webkit-scrollbar-track {
+      @apply bg-gray-300 rounded-sm;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      @apply bg-[#43A5AE] rounded-lg;
+    }
+  }
+  
