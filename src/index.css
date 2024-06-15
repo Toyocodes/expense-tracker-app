@@ -19,7 +19,7 @@ body {
     }
   
     &::-webkit-scrollbar-thumb {
-      @apply bg-[#43A5AE] rounded-lg;
+      @apply bg-[#2f8833] rounded-lg;
     }
   }
   

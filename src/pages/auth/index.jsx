@@ -13,7 +13,7 @@ const Auth = () => {
     const results = await signInWithPopup(auth, provider);
     const authInfo = {
       userID: results.user.uid,
-      name: results.user.firstName,
+      name: results.user.displayName,
       profilePhoto: results.user.photoURL,
       isAuth: true,
     };
@@ -22,9 +22,9 @@ const Auth = () => {
     toast.success("Logged in successfully!");
   };
 
-  if (isAuth) {
-    return <Navigate to="/expense-tracker" />;
-  }
+  // if (isAuth) {
+  //   return <Navigate to="/expense-tracker" />;
+  // }
 
   return (
     <div className="login-page">

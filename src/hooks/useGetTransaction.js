@@ -49,7 +49,6 @@ export const useGetTransactions = () => {
             totalIncome += Number(data.transactionAmount);
           }
 
-          console.log(totalExpenses, totalIncome);
         });
 
         setTransactions(docs);
@@ -73,7 +72,7 @@ export const useGetTransactions = () => {
 
   useEffect(() => {
     getTransactions();
-  }, []);
+  }, [userID]);
 
   return { transactions, transactionTotals, loading };
 };
