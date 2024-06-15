@@ -9,8 +9,9 @@ const Loader = () => {
     wrapperClass="color-ring-wrapper"
   />;
 
+ 
   return (
-    <div>
+    <div className="flex justify-center items-center">
       <ColorRing
         height="80"
         width="80"

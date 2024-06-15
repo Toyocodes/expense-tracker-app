@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../config/firebase-config";
@@ -12,12 +12,11 @@ import { MdDelete } from "react-icons/md";
 import { AiFillEdit } from "react-icons/ai";
 import Loader from "../../components/loader";
 import Greeting from "../../components/greetings";
-import { ColorRing } from "react-loader-spinner";
 
 const ExpenseTracker = () => {
   const navigate = useNavigate();
   const [description, setDescription] = useState("");
-  const [transactionAmount, setTransactionAmount] = useState(0);
+  const [transactionAmount, setTransactionAmount] = useState();
   const [transactionType, setTransactionType] = useState("expense");
   const [editMode, setEditMode] = useState(false);
   const [currentTransactionId, setCurrentTransactionId] = useState(null);
@@ -81,7 +80,6 @@ const ExpenseTracker = () => {
     deleteTransaction(transactionId);
     toast.success("Transaction deleted successfully");
   };
- 
 
   return (
     <div className="pt-8">
@@ -115,12 +113,20 @@ const ExpenseTracker = () => {
                   Let&apos;s track today&apos;s expenses 😊
                 </p>
               </div>
-              <div className=" bg-purple-900 text-white rounded-xl shadow-lg p-6 mb-4 text-center">
+              
+                <div className=" bg-purple-900 text-white rounded-xl shadow-lg p-6 mb-4 text-center">
+                {loading ? (
+                <Loader />
+              ) : (
+               <>
                 <h3 className="text-lg mb-2">Total Balance</h3>
                 <h2 className="text-4xl font-bold">
                   {balance >= 0 ? `₦${balance}` : `-₦${balance * -1}`}
-                </h2>
+                </h2></>
+                )}
               </div>
+              
+              
               {loading ? (
                 <Loader />
               ) : (

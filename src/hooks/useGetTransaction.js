@@ -10,7 +10,7 @@ import { db } from "../config/firebase-config";
 import { useGetUserInfo } from "./useGetUserInfo";
 
 export const useGetTransactions = () => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true);
   const [transactions, setTransactions] = useState([]);
   const [transactionTotals, setTransactionTotals] = useState({
     balance: 0.0,
@@ -22,7 +22,7 @@ export const useGetTransactions = () => {
   const { userID } = useGetUserInfo();
 
   const getTransactions = async () => {
-    setLoading(true);
+    // setLoading(true);
     let unsubscribe;
     try {
       const queryTransactions = query(
@@ -48,7 +48,6 @@ export const useGetTransactions = () => {
           } else {
             totalIncome += Number(data.transactionAmount);
           }
-
         });
 
         setTransactions(docs);
@@ -59,19 +58,20 @@ export const useGetTransactions = () => {
           expenses: totalExpenses,
           income: totalIncome,
         });
-        setLoading(false);
+        // setLoading(false);
       });
     } catch (err) {
       console.error(err);
-    } finally {
-      setLoading(false); 
     }
-   
+
     return () => unsubscribe();
   };
 
   useEffect(() => {
     getTransactions();
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
   }, [userID]);
 
   return { transactions, transactionTotals, loading };
