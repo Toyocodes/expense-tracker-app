@@ -10,7 +10,7 @@ body {
   body, .transactions {
     @apply overflow-x-hidden scroll-smooth p-0 m-0 box-border;
     &::-webkit-scrollbar {
-      width: 5px;
+      width: 6px;
       height: 200px;
     }
   

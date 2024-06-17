@@ -27,7 +27,7 @@ const Greeting = ({ name }) => {
   return (
     <div className="flex items-center space-x-2">
       {icon}
-      <h1 className="text-2xl font-semibold leading-8">{greeting}</h1>
+      <h1 className="text-xl md:text-2xl font-semibold leading-10">{greeting}</h1>
       
     </div>
   );

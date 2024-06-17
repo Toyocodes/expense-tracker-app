@@ -58,7 +58,7 @@ export const useGetTransactions = () => {
           expenses: totalExpenses,
           income: totalIncome,
         });
-        // setLoading(false);
+        
       });
     } catch (err) {
       console.error(err);
